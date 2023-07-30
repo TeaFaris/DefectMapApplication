@@ -1,4 +1,6 @@
-﻿namespace DefectMapApplication;
+﻿using SkiaSharp.Views.Maui.Controls.Hosting;
+
+namespace DefectMapApplication;
 
 public static class MauiProgram
 {
@@ -7,7 +9,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.UseMauiMaps()
+			.UseSkiaSharp(true)
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
