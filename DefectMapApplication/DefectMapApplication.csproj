@@ -46,9 +46,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.MVVM" Version="8.2.0" />
-	  <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.86" />
-	  <PackageReference Include="SimpleToolkit.Core" Version="2.0.6" />
+	  <PackageReference Include="CommunityToolkit.MVVM" Version="8.2.1" />
+	  <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.92" />
+	  <PackageReference Include="SimpleToolkit.Core" Version="3.0.0" />
 	</ItemGroup>
 
 	<PropertyGroup Label="MauiAppAccelerator">
