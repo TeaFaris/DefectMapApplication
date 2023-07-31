@@ -53,6 +53,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.MVVM" Version="8.2.1" />
+		<PackageReference Include="Geolocator.Plugin" Version="1.0.2" />
 		<PackageReference Include="Mapsui.Maui" Version="4.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.92" />
 		<PackageReference Include="SimpleToolkit.Core" Version="3.0.0" />
