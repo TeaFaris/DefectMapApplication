@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:DefectMapApplication.ViewModels"
+			 xmlns:maps="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
 			 x:Class="DefectMapApplication.Views.MainPage"
 			 x:DataType="vm:MainViewModel">
 
-	<Map x:Name="TheMap" />
+	<maps:MapView x:Name="map" />
 </ContentPage>
