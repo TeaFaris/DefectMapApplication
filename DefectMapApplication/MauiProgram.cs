@@ -8,6 +8,8 @@ namespace DefectMapApplication;
 
 public static class MauiProgram
 {
+	const string ServerAddress = "https://localhost:52920";
+
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
@@ -37,6 +39,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DefectListViewModel>();
 
 		builder.Services.AddSingleton<DefectListPage>();
+		builder.Services.AddSingleton<HttpClient>(_ => new HttpClient { BaseAddress = new Uri(Path.Combine(ServerAddress, "/api/")) });
 
 		ElementHandler.ElementMapper.AppendToMapping("Classic",
 			(handler, view) =>
