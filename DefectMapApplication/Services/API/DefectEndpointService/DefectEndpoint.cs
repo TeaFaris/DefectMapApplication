@@ -57,13 +57,13 @@ namespace DefectMapApplication.Services.API.DefectEndpointService
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task<IEnumerable<ServerFile>> UploadDefectPhoto(params FileResult[] files)
+        public async Task<IEnumerable<ServerFile>> UploadDefectPhoto(params LocalFile[] files)
         {
             using var content = new MultipartFormDataContent();
             
             foreach (var file in files)
             {
-                var streamContent = new StreamContent(await file.OpenReadAsync());
+                var streamContent = new StreamContent(file.Stream);
 
                 streamContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
 
@@ -73,6 +73,11 @@ namespace DefectMapApplication.Services.API.DefectEndpointService
             var result = await httpClient.PostAsJsonAsync("v1/defect/UploadPhotos", content);
 
             var serverFiles = await result.Content.ReadFromJsonAsync<List<ServerFile>>();
+
+            foreach (var file in files)
+            {
+                file.Stream.Dispose();
+            }
 
             return serverFiles;
         }

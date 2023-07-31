@@ -1,4 +1,5 @@
-﻿using DefectMapApplication.Platforms.ControlMappers;
+﻿using Camera.MAUI;
+using DefectMapApplication.Platforms.ControlMappers;
 using DefectMapApplication.Services.API.DefectEndpointService;
 using Microsoft.Maui.Handlers;
 using SimpleToolkit.Core;
@@ -9,7 +10,7 @@ namespace DefectMapApplication;
 
 public static class MauiProgram
 {
-	const string ServerAddress = "https://localhost:52920/";
+	const string ServerAddress = "https://zp2q0cz6-7285.euw.devtunnels.ms/";
 
 	public static MauiApp CreateMauiApp()
 	{
@@ -19,6 +20,7 @@ public static class MauiProgram
 			.UseSkiaSharp(true)
 			.UseSimpleToolkit()
 			.UseSimpleShell()
+			.UseMauiCameraView()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

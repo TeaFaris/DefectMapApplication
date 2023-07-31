@@ -8,7 +8,7 @@
 
         Task<IEnumerable<Defect>> Find(string name);
 
-        Task<IEnumerable<ServerFile>> UploadDefectPhoto(params FileResult[] files);
+        Task<IEnumerable<ServerFile>> UploadDefectPhoto(params LocalFile[] files);
 
         Task Create(Defect defect);
 
