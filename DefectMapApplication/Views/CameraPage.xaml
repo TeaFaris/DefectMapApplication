@@ -16,7 +16,7 @@
 			<simpleCore:ContentButton WidthRequest="70"
 									  HeightRequest="70"
 									  Margin="40"
-									  Command="{Binding TakePictureCommand}"
+									  Clicked="TakePicture"
 									  VerticalOptions="End">
 
 				<Border Background="{StaticResource Primary}"

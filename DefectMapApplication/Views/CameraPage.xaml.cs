@@ -31,7 +31,7 @@ public partial class CameraPage : ContentPage
 		});
 	}
 
-	private async Task TakePicture()
+	private async void TakePicture(object sender, EventArgs e)
 	{
 		var picture = camera.GetSnapShot();
 
