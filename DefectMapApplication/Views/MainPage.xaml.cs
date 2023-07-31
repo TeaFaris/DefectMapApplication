@@ -1,6 +1,4 @@
-﻿using Mapsui.Nts;
-using Mapsui.Tiling;
-using Mapsui.UI.Maui;
+﻿using Mapsui.Tiling;
 
 namespace DefectMapApplication.Views;
 
@@ -10,5 +8,12 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
+
+		Loaded += MainPage_Loaded;
+	}
+
+	private void MainPage_Loaded(object sender, EventArgs e)
+	{
+		map.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
 	}
 }
