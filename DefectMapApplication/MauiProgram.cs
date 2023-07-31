@@ -1,4 +1,5 @@
 ﻿using DefectMapApplication.Platforms.ControlMappers;
+using DefectMapApplication.Services.API.DefectEndpointService;
 using Microsoft.Maui.Handlers;
 using SimpleToolkit.Core;
 using SimpleToolkit.SimpleShell;
@@ -8,7 +9,7 @@ namespace DefectMapApplication;
 
 public static class MauiProgram
 {
-	const string ServerAddress = "https://localhost:52920";
+	const string ServerAddress = "https://localhost:52920/";
 
 	public static MauiApp CreateMauiApp()
 	{
@@ -39,7 +40,10 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DefectListViewModel>();
 
 		builder.Services.AddSingleton<DefectListPage>();
-		builder.Services.AddSingleton<HttpClient>(_ => new HttpClient { BaseAddress = new Uri(Path.Combine(ServerAddress, "/api/")) });
+
+		builder.Services.AddSingleton<HttpClient>(_ => new HttpClient { BaseAddress = new Uri(Path.Combine(ServerAddress, "api/")) });
+
+		builder.Services.AddSingleton<IDefectEndpoint, DefectEndpoint>();
 
 		ElementHandler.ElementMapper.AppendToMapping("Classic",
 			(handler, view) =>

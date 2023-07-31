@@ -60,10 +60,6 @@
 		<PackageReference Include="SimpleToolkit.SimpleShell" Version="3.0.1" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Services\API\" />
-	</ItemGroup>
-
 	<PropertyGroup Label="MauiAppAccelerator">
 		<wizardVersion>v1.3.1</wizardVersion>
 		<projectType>MVVMToolkit</projectType>

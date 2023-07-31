@@ -12,10 +12,10 @@ public partial class MainPage : ContentPage
 		Loaded += MainPage_Loaded;
 	}
 
-	private void MainPage_Loaded(object sender, EventArgs e)
+	private async void MainPage_Loaded(object sender, EventArgs e)
 	{
 		map.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
 
-		(BindingContext as MainViewModel).Init(map);
+		await (BindingContext as MainViewModel).Init(map);
 	}
 }
