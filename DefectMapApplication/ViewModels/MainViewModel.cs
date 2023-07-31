@@ -56,7 +56,7 @@ public partial class MainViewModel : BaseViewModel
         }
     }
 
-    private async void Current_PositionChanged(object sender, PositionEventArgs e)
+    private void Current_PositionChanged(object sender, PositionEventArgs e)
     {
         Mapsui.UI.Maui.Position mauiPosition = new Mapsui.UI.Maui.Position(e.Position.Latitude, e.Position.Longitude);
         mapView.MyLocationLayer.UpdateMyLocation(mauiPosition);

@@ -30,4 +30,24 @@ public partial class CameraPage : ContentPage
 			await camera.StartCameraAsync();
 		});
 	}
+
+	private async Task TakePicture()
+	{
+		var picture = camera.GetSnapShot();
+
+		using var stream = await ((StreamImageSource)picture).Stream(CancellationToken.None);
+
+		var pictureStream = new MemoryStream();
+		await stream.CopyToAsync(pictureStream);
+
+		pictureStream.Position = 0;
+
+		var file = new LocalFile()
+		{
+			Stream = pictureStream,
+			ContentType = "Image/png"
+		};
+
+		// TODO: Push to create defect page
+	}
 }
