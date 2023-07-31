@@ -15,5 +15,7 @@ public partial class MainPage : ContentPage
 	private void MainPage_Loaded(object sender, EventArgs e)
 	{
 		map.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
+
+		(BindingContext as MainViewModel).Init(map);
 	}
 }
