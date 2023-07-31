@@ -1,4 +1,8 @@
-﻿using SkiaSharp.Views.Maui.Controls.Hosting;
+﻿using DefectMapApplication.Platforms.ControlMappers;
+using Microsoft.Maui.Handlers;
+using SimpleToolkit.Core;
+using SimpleToolkit.SimpleShell;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace DefectMapApplication;
 
@@ -10,6 +14,8 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
 			.UseSkiaSharp(true)
+			.UseSimpleToolkit()
+			.UseSimpleShell()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -31,6 +37,12 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DefectListViewModel>();
 
 		builder.Services.AddSingleton<DefectListPage>();
+
+		ElementHandler.ElementMapper.AppendToMapping("Classic",
+			(handler, view) =>
+			{
+				EntryMapper.Map(handler, view);
+			});
 
 		return builder.Build();
 	}

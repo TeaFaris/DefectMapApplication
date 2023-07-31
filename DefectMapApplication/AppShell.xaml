@@ -1,14 +1,136 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-	x:Class="DefectMapApplication.AppShell"
-	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:views="clr-namespace:DefectMapApplication.Views"
-	xmlns:local="clr-namespace:DefectMapApplication">
-	<ShellContent
-		Shell.NavBarIsVisible="False"
-		Title="Main"
-		ContentTemplate="{DataTemplate views:MainPage}"
-		Route="MainPage" />
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<simpleShell:SimpleShell
+    x:Class="DefectMapApplication.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:simpleShell="clr-namespace:SimpleToolkit.SimpleShell;assembly=SimpleToolkit.SimpleShell"
+    xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core"
+    xmlns:pages="clr-namespace:DefectMapApplication.Views"
+    xmlns:util="clr-namespace:DefectMapApplication.Controls.Util"
+    xmlns:standard="clr-namespace:DefectMapApplication.Controls.Standard"
+    x:Name="thisShell"
+    Background="{StaticResource White}">
 
-</Shell>
+    <!-- Pages can be grouped into tabs (ShellSections) -->
+    <Tab Route="MainTab">
+        <ShellContent
+            Icon="homeicon.png"
+            Title="Главная"
+            ContentTemplate="{DataTemplate pages:MainPage}"
+            Route="MainPage"/>
+    </Tab>
+
+    <Tab Route="CameraTab">
+        <ShellContent
+            Icon="cameraicon.png"
+            ContentTemplate="{DataTemplate pages:CameraPage}"
+            Route="CameraPage"/>
+    </Tab>
+
+    <Tab Route="ListTab">
+        <ShellContent
+            Icon="listicon.png"
+            Title="Список"
+            ContentTemplate="{DataTemplate pages:DefectListPage}"
+            Route="DefectListPage"/>
+    </Tab>
+
+    <simpleShell:SimpleShell.Content>
+        <Grid RowDefinitions="70, *, 60"
+              Background="{StaticResource Primary}">
+
+            <Label TextColor="{StaticResource White}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   Text="Карта свалок"
+                   FontAttributes="Bold" FontSize="18"/>
+
+            <standard:RoundedEntry x:Name="searchBar"
+                                   BackgroundColor="{StaticResource White}"
+                                   TextColor="{StaticResource Black}"
+                                   VerticalOptions="End"
+                                   CornerRadius="36"
+                                   Margin="10"
+                                   Completed="Search"
+                                   Padding="10,5,5,5"/>
+            
+            <simpleShell:SimpleNavigationHost Grid.Row="1"/>
+
+
+            <HorizontalStackLayout x:Name="tabBar"
+                                   Grid.Row="2"
+                                   Margin="20,5"
+                                   Background="{StaticResource Key=Primary}"
+                                   Spacing="50"
+                                   HorizontalOptions="Center"
+                                   BindableLayout.ItemsSource="{Binding ShellContents, Source={Reference Name=thisShell}}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type BaseShellItem}">
+                        <VerticalStackLayout>
+
+                            <util:IfData Source="{Binding Route}"
+                                         Value="CameraPage"
+                                         Invert="True">
+
+                                <simpleCore:ContentButton Clicked="ShellItemButtonClicked">
+
+                                    <Border Background="{StaticResource Primary}"
+                                            StrokeThickness="0">
+
+                                        <Border.StrokeShape>
+                                            <Rectangle />
+                                        </Border.StrokeShape>
+
+
+                                        <StackLayout>
+                                            <simpleCore:Icon Source="{Binding Icon}"
+                                                             TintColor="{StaticResource White}" />
+                                            <Label TextColor="{StaticResource White}"
+                                                   Text="{Binding Title}" />
+                                        </StackLayout>
+
+                                    </Border>
+
+                                </simpleCore:ContentButton>
+                            </util:IfData>
+
+                            <util:IfData Source="{Binding Route}"
+                                         Value="CameraPage">
+                                <simpleCore:ContentButton Margin="0,0,10,0"
+                                                          WidthRequest="70"
+                                                          HeightRequest="70"
+                                                          Clicked="ShellItemButtonClicked">
+
+                                    <Border Background="{StaticResource Primary}"
+                                            StrokeThickness="0"
+                                            TranslationY="-37">
+
+                                        <Border.StrokeShape>
+                                            <Ellipse />
+                                        </Border.StrokeShape>
+
+
+                                        <simpleCore:Icon Source="{Binding Icon}"
+                                                         TintColor="{StaticResource White}"
+                                                         VerticalOptions="Center"
+                                                         WidthRequest="45"
+                                                         HeightRequest="45"/>
+
+                                        <Border.Shadow>
+                                            <Shadow Brush="Black"
+                                                    Radius="20"
+                                                    Opacity="0.8" />
+                                        </Border.Shadow>
+                                    </Border>
+
+                                </simpleCore:ContentButton>
+                            </util:IfData>
+
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </HorizontalStackLayout>
+        </Grid>
+    </simpleShell:SimpleShell.Content>
+
+</simpleShell:SimpleShell>

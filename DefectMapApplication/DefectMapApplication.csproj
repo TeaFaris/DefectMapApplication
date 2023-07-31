@@ -46,10 +46,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.MVVM" Version="8.2.1" />
-	  <PackageReference Include="Mapsui.Maui" Version="4.0.0" />
-	  <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.92" />
-	  <PackageReference Include="SimpleToolkit.Core" Version="3.0.0" />
+		<None Remove="Resources\Images\cameraicon.svg" />
+		<None Remove="Resources\Images\homeicon.svg" />
+		<None Remove="Resources\Images\listicon.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.MVVM" Version="8.2.1" />
+		<PackageReference Include="Mapsui.Maui" Version="4.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.92" />
+		<PackageReference Include="SimpleToolkit.Core" Version="3.0.0" />
+		<PackageReference Include="SimpleToolkit.SimpleShell" Version="3.0.1" />
 	</ItemGroup>
 
 	<PropertyGroup Label="MauiAppAccelerator">
@@ -57,5 +64,15 @@
 		<projectType>MVVMToolkit</projectType>
 		<framework>Blank</framework>
 	</PropertyGroup>
+
+	<PropertyGroup Label="WarningSuppresses">
+		<NoWarn>
+			S1104,
+			S2223,
+			CodeOptimization
+		</NoWarn>
+	</PropertyGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionDefectMapApplicationHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
